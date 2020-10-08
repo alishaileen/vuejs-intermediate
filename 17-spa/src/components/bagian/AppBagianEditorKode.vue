@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import AppKode from '../AppKode'
+import AppKode from '../AppKomponen/AppKode'
 
 import { validator } from '../../utils'
 

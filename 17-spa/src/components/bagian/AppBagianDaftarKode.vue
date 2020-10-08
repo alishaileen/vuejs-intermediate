@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import AppKode from '../AppKode'
+import AppKode from '../AppKomponen/AppKode'
 
 export default {
   components: {

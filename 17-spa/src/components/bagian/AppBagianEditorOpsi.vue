@@ -66,9 +66,9 @@ import {
 } from '../../utils'
 import { URL_API, OPSI_STRINGIFY } from '../../constants'
 
-import AppTombol from '../AppTombol'
-import AppFormulirInput from '../AppFormulirInput'
-import AppFormulirPilihan from '../AppFormulirPilihan'
+import AppTombol from '../AppKomponen/AppTombol'
+import AppFormulirInput from '../AppKomponen/AppFormulirInput'
+import AppFormulirPilihan from '../AppKomponen/AppFormulirPilihan'
 
 export default {
   components: {
