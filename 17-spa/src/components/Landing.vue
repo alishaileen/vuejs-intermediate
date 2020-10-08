@@ -7,9 +7,6 @@
 </template>
 
 <script>
-import { stringifyUrl } from 'query-string'
-import debounce from 'debounce-fn'
-import cleanDeep from 'clean-deep'
 
 import AppBagianPengguna from './bagian/AppBagianPengguna'
 

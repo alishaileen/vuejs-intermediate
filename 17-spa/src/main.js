@@ -13,11 +13,11 @@ import DataCode from './components/preset/DataCode'
 import DataLsp from './components/preset/DataLsp'
 import DataErr from './components/preset/DataErr'
 
-// import AppRadio from './AppKomponen/AppRadio'
-// import AppTombol from './AppKomponen/AppTombol'
-// import AppFormulirAreaTeks from './AppKomponen/AppFormulirAreaTeks'
-// import AppFormulirInput from './AppKomponen/AppFormulirInput'
-// import AppFormulirPilihan from './AppKomponen/AppFormulirPilihan'
+import AppRadio from './components/AppKomponen/AppRadio'
+import AppTombol from './components/AppKomponen/AppTombol'
+import AppFormulirAreaTeks from './components/AppKomponen/AppFormulirAreaTeks'
+import AppFormulirInput from './components/AppKomponen/AppFormulirInput'
+import AppFormulirPilihan from './components/AppKomponen/AppFormulirPilihan'
 
 import pengguna from './store/pengguna'
 import kode from './store/kode'
@@ -34,11 +34,11 @@ Vue.component(DataCode.name, DataCode)
 Vue.component(DataLsp.name, DataLsp)
 Vue.component(DataErr.name, DataErr)
 
-// Vue.component(AppRadio.name, AppRadio)
-// Vue.component(AppTombol.name, AppTombol)
-// Vue.component(AppFormulirAreaTeks.name, AppFormulirAreaTeks)
-// Vue.component(AppFormulirInput.name, AppFormulirInput)
-// Vue.component(AppFormulirPilihan.name, AppFormulirPilihan)
+Vue.component(AppRadio.name, AppRadio)
+Vue.component(AppTombol.name, AppTombol)
+Vue.component(AppFormulirAreaTeks.name, AppFormulirAreaTeks)
+Vue.component(AppFormulirInput.name, AppFormulirInput)
+Vue.component(AppFormulirPilihan.name, AppFormulirPilihan)
 
 const store = new Vuex.Store({
   state() {
