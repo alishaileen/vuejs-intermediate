@@ -1,7 +1,10 @@
+<!-- @format -->
+
 <template>
   <section class="pengguna">
     <div class="columns">
       <div class="column">
+        <h1 class="title is-3">Login</h1>
         <app-formulir-input
           v-model="namaPenggunaMasuk"
           nama="masuk"
@@ -18,6 +21,7 @@
         </app-formulir-input>
       </div>
       <div class="column">
+        <h1 class="title is-3">Daftar</h1>
         <app-formulir-input
           v-model="namaPenggunaDaftar"
           nama="daftar"

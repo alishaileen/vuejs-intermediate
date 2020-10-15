@@ -23,7 +23,7 @@
             </b-button>
             <app-tombol
               v-if="$store.state.pengguna.idPengguna"
-              class="margin-right"
+              warna="is-dark"
               nama="keluar"
               label="Keluar"
               @klik="ketikaTombolKeluarDiKlik"
@@ -65,11 +65,12 @@
       v-model="isModalOpened"
     >
       <div class="modal-card">
-        <header class="modal-card-head">
+        <!-- <header class="modal-card-head">
           <p class="modal-card-title">Login atau Daftar</p>
+        </header> -->
+        <section class="box">
           <button type="button" class="delete" @click="isModalOpened = false" />
-        </header>
-        <section class="modal-card-body">
+
           <app-bagian-pengguna :tutupModal.sync="isModalOpened" />
         </section>
       </div>
@@ -130,20 +131,20 @@ export default {
     },
     dataKode: {
       handler: debounce(
-        function (dataKode) {
+        function(dataKode) {
           this.hasilHighlight = "";
           this.highlighter(dataKode.inputKode);
         },
-        { wait: 500 }
+        { wait: 500 },
       ),
       deep: true,
     },
     filter: {
       handler: debounce(
-        function () {
+        function() {
           this.dapatkanDaftarKode();
         },
-        { wait: 500 }
+        { wait: 500 },
       ),
       deep: true,
     },
@@ -203,7 +204,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat
+          dataNotifikasiGalat,
         );
         console.log(error);
       } finally {
@@ -232,7 +233,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat
+          dataNotifikasiGalat,
         );
         console.log(error);
       }
@@ -251,7 +252,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat
+          dataNotifikasiGalat,
         );
         console.log(error);
       }
@@ -288,7 +289,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat
+          dataNotifikasiGalat,
         );
         console.log(error);
       } finally {

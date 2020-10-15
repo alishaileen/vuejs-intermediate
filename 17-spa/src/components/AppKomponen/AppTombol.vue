@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <!-- <div :class="`tombol-${nama}`">
     <button
@@ -8,7 +10,12 @@
     </button>
   </div> -->
   <div :class="`tombol-${nama}`">
-    <b-button :type="btnType" :disabled="nonaktif" @click="ketikaTombolDiKlik">
+    <b-button
+      class="button"
+      :type="warna"
+      :disabled="nonaktif"
+      @click="ketikaTombolDiKlik"
+    >
       {{ label }}
     </b-button>
   </div>
@@ -32,8 +39,7 @@ export default {
       type: Boolean,
       default: false,
     },
-
-    btnType: {
+    warna: {
       type: String,
       default: "is-light",
     },

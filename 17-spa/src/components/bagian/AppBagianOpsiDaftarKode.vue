@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <template>
   <section class="opsi-daftar-kode">
     <app-formulir-input
@@ -9,7 +11,7 @@
       class="margin-bottom"
       @input="updateBanyakData"
     />
-    <!-- <div class="opsi-highlight-menyala margin-bottom">
+    <div class="opsi-highlight-menyala margin-bottom">
       <app-radio
         :value="apakahHighlightMenyala"
         :daftar-pilihan="daftarHighlightMenyala"
@@ -17,7 +19,7 @@
         label="Highlighter"
         @input="$emit('update:apakahHighlightMenyala', $event)"
       />
-    </div> -->
+    </div>
     <app-formulir-pilihan
       :value="urutkanBerdasarkan"
       nama="urutkan-berdasarkan"

@@ -36,7 +36,7 @@
         <app-formulir-pilihan
           v-show="
             bahasaPemrogramanTerpilih === 'typescript' ||
-            bahasaPemrogramanTerpilih === 'json'
+              bahasaPemrogramanTerpilih === 'json'
           "
           :value="twoslashTerpilih"
           nama="twoslash"
@@ -54,6 +54,7 @@
             @klik="$emit('reset')"
           />
           <AppTombolEditor
+            v-show="$store.state.pengguna.idPengguna"
             warna="is-success"
             icon="content-save-outline"
             @klik="ketikaTombolSimpanDiKlik"
@@ -117,15 +118,10 @@ export default {
     return {
       daftarBahasaPemrograman: [],
       daftarTwoslash: ["twoslash", "tsconfig"],
-      apakahPilihanTwoslashDisabled: true,
-      apakahUnduhNonaktif: true,
     };
   },
   created() {
     this.dapatkanDaftarBahasaPemrograman();
-  },
-  mounted() {
-    console.log(this.apakahPilihanTwoslashDisabled);
   },
   methods: {
     async dapatkanDaftarBahasaPemrograman() {
@@ -142,7 +138,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat
+          dataNotifikasiGalat,
         );
         console.log(error);
       }
@@ -172,7 +168,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat
+          dataNotifikasiGalat,
         );
         console.log(error);
       } finally {
@@ -201,7 +197,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat
+          dataNotifikasiGalat,
         );
         console.log(error);
       }
