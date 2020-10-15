@@ -1,5 +1,9 @@
-import { URL_API } from "../constants"
-import { kirimData } from '../utils'
+import {
+  URL_API
+} from "../constants"
+import {
+  kirimData
+} from '../utils'
 
 function state() {
   return {
@@ -9,7 +13,10 @@ function state() {
 }
 
 const mutations = {
-  aturDataPengguna(state, { idPengguna, namaPengguna }) {
+  aturDataPengguna(state, {
+    idPengguna,
+    namaPengguna
+  }) {
     state.idPengguna = idPengguna
     state.namaPengguna = namaPengguna
   },
@@ -20,9 +27,16 @@ const mutations = {
 }
 
 const actions = {
-  async masuk({ commit, dispatch }, { namaPengguna }) {
+  async masuk({
+    commit,
+    dispatch
+  }, {
+    namaPengguna
+  }) {
     try {
-      dispatch('proses/tampilkanProses', null, { root: true })
+      dispatch('proses/tampilkanProses', null, {
+        root: true
+      })
       const url = `${URL_API}/user/login`
 
       const respon = await kirimData(url, {
@@ -36,26 +50,41 @@ const actions = {
         })
         const dataNotifikasi = {
           apakahTampil: true,
-          pesan: 'Berhasil masuk'
+          pesan: 'Berhasil masuk',
+          warnaPesan: 'is-success'
         }
-        await dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasi, { root: true })
+        await dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasi, {
+          root: true
+        })
       } else {
         throw new Error(respon.message)
       }
     } catch (error) {
       const dataNotifikasiGalat = {
         apakahTampil: true,
-        pesan: error.message
+        pesan: error.message,
+        warnaPesan: 'is-danger'
       }
-      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, { root: true })
+      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, {
+        root: true
+      })
       console.log(error)
     } finally {
-      dispatch('proses/hilangkanProses', null, { root: true })
+      dispatch('proses/hilangkanProses', null, {
+        root: true
+      })
     }
   },
-  async daftar({ commit, dispatch }, { namaPengguna }) {
+  async daftar({
+    commit,
+    dispatch
+  }, {
+    namaPengguna
+  }) {
     try {
-      dispatch('proses/tampilkanProses', null, { root: true })
+      dispatch('proses/tampilkanProses', null, {
+        root: true
+      })
       const url = `${URL_API}/user/register`
 
       const respon = await kirimData(url, {
@@ -69,31 +98,47 @@ const actions = {
         })
         const dataNotifikasi = {
           apakahTampil: true,
-          pesan: 'Berhasil daftar'
+          pesan: 'Berhasil daftar. Silahkan login',
+          warnaPesan: 'is-success'
         }
-        await dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasi, { root: true })
+        await dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasi, {
+          root: true
+        })
       } else {
         throw new Error(respon.message)
       }
     } catch (error) {
       const dataNotifikasiGalat = {
         apakahTampil: true,
-        pesan: error.message
+        pesan: error.message,
+        warnaPesan: 'is-danger'
       }
-      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, { root: true })
+      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, {
+        root: true
+      })
       console.log(error)
     } finally {
-      dispatch('proses/hilangkanProses', null, { root: true })
+      dispatch('proses/hilangkanProses', null, {
+        root: true
+      })
     }
   },
-  keluar({ commit, dispatch }) {
+  keluar({
+    commit,
+    dispatch
+  }) {
     commit('resetDataPengguna')
-    commit('kode/resetDaftarKode', null, { root: true })
+    commit('kode/resetDaftarKode', null, {
+      root: true
+    })
     const dataNotifikasi = {
       apakahTampil: true,
-      pesan: 'Berhasil keluar'
+      pesan: 'Berhasil keluar',
+      warnaPesan: 'is-info'
     }
-    dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasi, { root: true })
+    dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasi, {
+      root: true
+    })
   }
 }
 

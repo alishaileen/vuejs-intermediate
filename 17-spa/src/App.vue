@@ -1,15 +1,20 @@
 <template>
-  <router-view></router-view>
+  <main>
+    <router-view></router-view>
+    <app-notifikasi />
+    <app-proses />
+  </main>
 </template>
 
 <script>
+import AppNotifikasi from './components/AppKomponen/AppNotifikasi'
+import AppProses from './components/AppKomponen/AppProses'
+
 export default {
   name: "App",
-  // watch: {
-  //   $route(to) {
-  //     document.title = to.meta.title;
-  //   },
-  //   immediate: true,
-  // },
+  components: {
+    AppNotifikasi,
+    AppProses
+  }
 };
 </script>

@@ -9,29 +9,16 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: "history",
-    routes: [
-        {
+    routes: [{
             path: "/",
             name: "Landing",
             component: importComponent('Landing'),
         },
-        // {
-        //     path: "/list-code",
-        //     name: "list-code",
-        //     component: importComponent('Admin'),
-        //     children: [
-        //         // SPESIES
-        //         {
-        //             path: "/spesies",
-        //             name: "AllSpesies",
-        //             component: importComponent('Spesies/AllSpesies'),
-        //             meta: {
-        //                 auth: false,
-        //                 title: 'eBurung'
-        //             },
-        //         },
-        //     ]
-        // },
+        {
+            path: "/list-kode",
+            name: "ListKode",
+            component: importComponent('ListKode'),
+        },
         {
             path: '*',
             redirect: '/'

@@ -1,28 +1,33 @@
+<!-- @format -->
+
 <template>
-  <div
-    v-if="$store.state.notifikasi.apakahTampil"
+  <b-notification
+    auto-close
+    v-model="$store.state.notifikasi.apakahTampil"
+    has-icon
+    :type="$store.state.notifikasi.warnaPesan"
     class="notifikasi"
+    aria-close-label="Close notification"
   >
     {{ $store.state.notifikasi.pesan }}
-  </div>
+  </b-notification>
 </template>
 
 <script>
 export default {
-  name: 'AppNotifikasi',
-}
+  name: "AppNotifikasi",
+};
 </script>
 
 <style>
 .notifikasi {
-  border: 1px solid #1a202c;
-  background: #eee;
+  z-index: 1000;
   position: fixed;
   right: 50px;
   top: 50px;
-  width: 300px;
+  /* width: 300px;
   height: auto;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 5px; */
 }
 </style>

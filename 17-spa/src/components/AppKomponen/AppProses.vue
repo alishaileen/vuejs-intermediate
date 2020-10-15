@@ -1,28 +1,35 @@
+<!-- @format -->
+
 <template>
-  <div
-    v-if="$store.state.proses.apakahProsesTampil"
-    class="proses"
-  >
-    Sedang berkomunikasi dengan server...
+  <div v-if="$store.state.proses.apakahProsesTampil">
+    <b-notification
+      auto-close
+      type="is-info"
+      class="proses"
+      aria-close-label="Close notification"
+    >
+      Sedang berkomunikasi dengan server...
+    </b-notification>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AppProses',
-}
+  name: "AppProses",
+};
 </script>
 
 <style>
 .proses {
-  border: 1px solid #1a202c;
-  background: #eee;
+  z-index: 1000;
+  /* border: 1px solid #1a202c; */
+  /* background: #eee; */
   position: fixed;
   right: 50px;
   bottom: 50px;
-  width: 300px;
+  /* width: 300px;
   height: auto;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 5px; */
 }
 </style>

@@ -1,26 +1,12 @@
-section {
-  padding: 30px;
-}
-
-button,
-input,
-select,
-textarea {
-  border: 1px solid #1a202c;
-  padding: 5px;
-  border-radius: 5px;
-  background: #eee;
-}
-
-button[disabled] {
+/* button[disabled] {
   color: rgba(26, 32, 44, .3);
   border: 1px solid rgba(26, 32, 44, .3);
   cursor: default;
-}
+} */
 
-.margin-bottom {
+/* .margin-bottom {
   margin-bottom: 20px;
-}
+} */
 
 .margin-left {
   margin-left: 10px;
@@ -37,7 +23,7 @@ button[disabled] {
 
 .opsi-formulir-input-kode,
 .tampilan-kode {
-  margin: 20px;
+  min-width: 500px;
   max-width: 500px;
 }
 

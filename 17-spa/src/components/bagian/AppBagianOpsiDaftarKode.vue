@@ -1,26 +1,13 @@
 <template>
   <section class="opsi-daftar-kode">
-    <div class="opsi-halaman flex flex-align-center margin-bottom">
-      <app-tombol
-        nama="sebelumnya"
-        label="Sebelumnya"
-        :nonaktif="halaman === 1"
-        @klik="ketikaTombolSebelumnyaDiKlik"
-      />
-      <app-tombol
-        nama="selanjutnya"
-        label="Selanjutnya"
-        class="margin-left"
-        @klik="ketikaTombolSelanjutnyaDiKlik"
-      />
-    </div>
     <app-formulir-input
       :value="banyakData"
       nama="banyak-data"
       label="Banyak Data"
       tipe="number"
+      icon="text-box-multiple-outline"
       class="margin-bottom"
-      @input="$emit('update:banyakData', $event)"
+      @input="updateBanyakData"
     />
     <!-- <div class="opsi-highlight-menyala margin-bottom">
       <app-radio
@@ -38,6 +25,8 @@
       class="margin-bottom"
       :daftar-pilihan="daftarUrutkanBerdasarkan"
       :daftar-pilihan-berbentuk-objek="true"
+      icon="sort"
+      placeholder="Pilih"
       @input="$emit('update:urutkanBerdasarkan', $event)"
     />
     <app-formulir-pilihan
@@ -47,6 +36,8 @@
       class="margin-bottom"
       :daftar-pilihan="daftarUrutkan"
       :daftar-pilihan-berbentuk-objek="true"
+      icon="sort-clock-ascending-outline"
+      placeholder="Pilih"
       @input="$emit('update:urutkan', $event)"
     />
   </section>
@@ -55,69 +46,58 @@
 <script>
 export default {
   props: {
-    halaman: {
-      type: Number,
-      required: true,
-      default: 1
-    },
     banyakData: {
       type: Number,
       required: true,
-      default: 5
+      default: 5,
     },
     urutkanBerdasarkan: {
       type: String,
       required: true,
-      default: 'fileName'
+      default: "fileName",
     },
     urutkan: {
       type: String,
       required: true,
-      default: 'DESC'
+      default: "DESC",
     },
     apakahHighlightMenyala: {
       type: Number,
       required: true,
-      default: 1
-    }
+      default: 1,
+    },
   },
   data() {
     return {
       daftarHighlightMenyala: [
-        { nilai: 1, teks: 'Menyala' },
-        { nilai: 0, teks: 'Tidak Menyala' }
+        { nilai: 1, teks: "Menyala" },
+        { nilai: 0, teks: "Tidak Menyala" },
       ],
       daftarUrutkanBerdasarkan: [
-        { nilai: 'fileName', teks: 'Nama Berkas' },
-        { nilai: 'lang', teks: 'Bahasa Pemrograman' },
-        { nilai: 'createdAt', teks: 'Kapan Dibuat' }
-      ]
-    }
+        { nilai: "fileName", teks: "Nama Berkas" },
+        { nilai: "lang", teks: "Bahasa Pemrograman" },
+        { nilai: "createdAt", teks: "Kapan Dibuat" },
+      ],
+    };
   },
   computed: {
     daftarUrutkan() {
-      if (this.urutkanBerdasarkan === 'createdAt') {
+      if (this.urutkanBerdasarkan === "createdAt") {
         return [
-          { nilai: 'ASC', teks: 'Terlama' },
-          { nilai: 'DESC', teks: 'Terbaru' }
-        ]
+          { nilai: "ASC", teks: "Terlama" },
+          { nilai: "DESC", teks: "Terbaru" },
+        ];
       }
       return [
-        { nilai: 'ASC', teks: 'A-Z' },
-        { nilai: 'DESC', teks: 'Z-A' }
-      ]
-    }
+        { nilai: "ASC", teks: "A-Z" },
+        { nilai: "DESC", teks: "Z-A" },
+      ];
+    },
   },
   methods: {
-    ketikaTombolSebelumnyaDiKlik() {
-      if (this.halaman - 1 < 1) {
-        return
-      }
-      this.$emit('update:halaman', this.halaman - 1)
+    updateBanyakData(event) {
+      this.$emit("update:banyakData", event);
     },
-    ketikaTombolSelanjutnyaDiKlik() {
-      this.$emit('update:halaman', this.halaman + 1)
-    }
-  }
-}
+  },
+};
 </script>

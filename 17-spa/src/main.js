@@ -3,10 +3,11 @@ import Vuex from 'vuex'
 import Buefy from 'buefy'
 
 import './assets/normalize.css'
-import './assets/highlighter.css'
 import './assets/tooltip.css'
 import './assets/aplikasi.css'
+import '../src/style.css'
 import 'buefy/dist/buefy.css'
+import './assets/highlighter.css'
 
 import App from './App.vue'
 import DataCode from './components/preset/DataCode'
