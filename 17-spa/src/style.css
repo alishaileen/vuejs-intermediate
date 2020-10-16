@@ -1,0 +1,53 @@
+.navbar {
+  background-color: transparent !important;
+}
+
+#list-kode .tampilan-kode {
+  margin-right: 10px;
+}
+
+.editor {
+  margin-top: 50px;
+}
+
+.editor-kode {
+  margin-top: 30px;
+}
+
+.box {
+  background-color: #F2E5D7;
+  height: auto;
+  min-width: 500px;
+  border-radius: 30px !important;
+}
+
+#input-kode {
+  border-radius: 20px !important;
+  min-height: 300px !important;
+  max-height: 500px !important;
+}
+
+.opsi-formulir-input-kode,
+.tampilan-kode {
+  width: 100%;
+  max-width: 500px;
+}
+
+.tampilan-kode {
+  min-height: 300px !important;
+  max-height: 500px !important;
+}
+
+body, footer {
+  background-color: #F4F1DE !important;
+}
+
+p, h1, h2, h3, h4, h5, h6, label, .label {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */
