@@ -2,14 +2,6 @@
 
 <template>
   <div :class="`opsi-formulir-${nama}`">
-    <!-- <label :for="nama"> {{ label }}: </label> -->
-    <br />
-    <!-- <textarea
-      :value="value"
-      :id="nama"
-      :class="nama"
-      @input="ketikaNilaiBerubah"
-    ></textarea> -->
     <b-field>
       <b-input
         type="textarea"

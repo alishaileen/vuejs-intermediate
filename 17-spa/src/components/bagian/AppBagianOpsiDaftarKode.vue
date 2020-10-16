@@ -2,16 +2,8 @@
 
 <template>
   <section class="opsi-daftar-kode">
-    <app-formulir-input
-      :value="banyakData"
-      nama="banyak-data"
-      label="Banyak Data"
-      tipe="number"
-      icon="text-box-multiple-outline"
-      class="margin-bottom"
-      @input="updateBanyakData"
-    />
-    <div class="opsi-highlight-menyala margin-bottom">
+    <div class="columns">
+      <!-- <div class="opsi-highlight-menyala margin-bottom">
       <app-radio
         :value="apakahHighlightMenyala"
         :daftar-pilihan="daftarHighlightMenyala"
@@ -19,29 +11,46 @@
         label="Highlighter"
         @input="$emit('update:apakahHighlightMenyala', $event)"
       />
+    </div> -->
+      <div class="column">
+        <app-formulir-pilihan
+          :value="urutkanBerdasarkan"
+          nama="urutkan-berdasarkan"
+          label="Urutkan Berdasarkan"
+          class="margin-bottom"
+          :daftar-pilihan="daftarUrutkanBerdasarkan"
+          :daftar-pilihan-berbentuk-objek="true"
+          icon="sort"
+          placeholder="Pilih"
+          @input="$emit('update:urutkanBerdasarkan', $event)"
+        />
+      </div>
+      <div class="column">
+        <app-formulir-pilihan
+          :value="urutkan"
+          nama="urutkan"
+          label="Urutkan"
+          class="margin-bottom"
+          :daftar-pilihan="daftarUrutkan"
+          :daftar-pilihan-berbentuk-objek="true"
+          icon="sort-clock-ascending-outline"
+          placeholder="Pilih"
+          @input="$emit('update:urutkan', $event)"
+        />
+      </div>
+      <div class="column">
+        <b-field label="Banyak Data">
+          <b-numberinput
+            class="margin-bottom"
+            @input="updateBanyakData"
+            :value="banyakData"
+            controls-position="compact"
+            min="1"
+            :max="maxPage"
+          ></b-numberinput>
+        </b-field>
+      </div>
     </div>
-    <app-formulir-pilihan
-      :value="urutkanBerdasarkan"
-      nama="urutkan-berdasarkan"
-      label="Urutkan Berdasarkan"
-      class="margin-bottom"
-      :daftar-pilihan="daftarUrutkanBerdasarkan"
-      :daftar-pilihan-berbentuk-objek="true"
-      icon="sort"
-      placeholder="Pilih"
-      @input="$emit('update:urutkanBerdasarkan', $event)"
-    />
-    <app-formulir-pilihan
-      :value="urutkan"
-      nama="urutkan"
-      label="Urutkan"
-      class="margin-bottom"
-      :daftar-pilihan="daftarUrutkan"
-      :daftar-pilihan-berbentuk-objek="true"
-      icon="sort-clock-ascending-outline"
-      placeholder="Pilih"
-      @input="$emit('update:urutkan', $event)"
-    />
   </section>
 </template>
 
@@ -51,7 +60,7 @@ export default {
     banyakData: {
       type: Number,
       required: true,
-      default: 5,
+      default: 1,
     },
     urutkanBerdasarkan: {
       type: String,
@@ -80,7 +89,11 @@ export default {
         { nilai: "lang", teks: "Bahasa Pemrograman" },
         { nilai: "createdAt", teks: "Kapan Dibuat" },
       ],
+      maxPage: this.$store.state.kode.daftarKode.length,
     };
+  },
+  mounted() {
+    console.log(this.maxPage);
   },
   computed: {
     daftarUrutkan() {

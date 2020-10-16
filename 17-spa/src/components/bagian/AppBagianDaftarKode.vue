@@ -30,10 +30,12 @@
 
 <script>
 import AppKode from "../AppKomponen/AppKode";
+import AppTombol from "../AppKomponen/AppTombol";
 
 export default {
   components: {
     AppKode,
+    AppTombol,
   },
   props: {
     apakahHighlightMenyala: {

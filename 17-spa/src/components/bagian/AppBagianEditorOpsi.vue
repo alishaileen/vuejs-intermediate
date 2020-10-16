@@ -36,7 +36,7 @@
         <app-formulir-pilihan
           v-show="
             bahasaPemrogramanTerpilih === 'typescript' ||
-              bahasaPemrogramanTerpilih === 'json'
+            bahasaPemrogramanTerpilih === 'json'
           "
           :value="twoslashTerpilih"
           nama="twoslash"
@@ -46,27 +46,24 @@
           @input="$emit('update:twoslashTerpilih', $event)"
         />
       </div>
-      <div class="column">
-        <div class="opsi-aksi-editor flex">
-          <AppTombolEditor
-            warna="is-danger"
-            icon="reload"
-            @klik="$emit('reset')"
-          />
-          <AppTombolEditor
-            v-show="$store.state.pengguna.idPengguna"
-            warna="is-success"
-            icon="content-save-outline"
-            @klik="ketikaTombolSimpanDiKlik"
-          />
-          <AppTombolEditor
-            v-show="hasilHighlight && hasilHighlight.length > 0"
-            warna="is-info"
-            icon="download-circle-outline"
-            @klik="ketikaTombolUnduhDiKlik"
-          />
-        </div>
-      </div>
+      <!-- <div class="column">
+        
+      </div> -->
+    </div>
+    <div class="opsi-aksi-editor flex">
+      <AppTombolEditor warna="is-danger" icon="reload" @klik="$emit('reset')" />
+      <AppTombolEditor
+        v-show="$store.state.pengguna.idPengguna"
+        warna="is-success"
+        icon="content-save-outline"
+        @klik="ketikaTombolSimpanDiKlik"
+      />
+      <AppTombolEditor
+        v-show="hasilHighlight && hasilHighlight.length > 0"
+        warna="is-info"
+        icon="download-circle-outline"
+        @klik="ketikaTombolUnduhDiKlik"
+      />
     </div>
   </section>
 </template>
@@ -138,7 +135,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat,
+          dataNotifikasiGalat
         );
         console.log(error);
       }
@@ -168,7 +165,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat,
+          dataNotifikasiGalat
         );
         console.log(error);
       } finally {
@@ -197,7 +194,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat,
+          dataNotifikasiGalat
         );
         console.log(error);
       }

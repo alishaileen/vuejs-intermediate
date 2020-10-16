@@ -46,13 +46,11 @@
           @reset="ketikaTombolResetDiKlik"
         />
 
-        <div class="box">
-          <app-bagian-editor-kode
-            :input-kode.sync="dataKode.inputKode"
-            :hasil-highlight="hasilHighlight"
-            :bahasa-pemrograman-terpilih="dataKode.bahasaPemrogramanTerpilih"
-          />
-        </div>
+        <app-bagian-editor-kode
+          :input-kode.sync="dataKode.inputKode"
+          :hasil-highlight="hasilHighlight"
+          :bahasa-pemrograman-terpilih="dataKode.bahasaPemrogramanTerpilih"
+        />
       </div>
     </section>
 
@@ -131,20 +129,20 @@ export default {
     },
     dataKode: {
       handler: debounce(
-        function(dataKode) {
+        function (dataKode) {
           this.hasilHighlight = "";
           this.highlighter(dataKode.inputKode);
         },
-        { wait: 500 },
+        { wait: 500 }
       ),
       deep: true,
     },
     filter: {
       handler: debounce(
-        function() {
+        function () {
           this.dapatkanDaftarKode();
         },
-        { wait: 500 },
+        { wait: 500 }
       ),
       deep: true,
     },
@@ -204,7 +202,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat,
+          dataNotifikasiGalat
         );
         console.log(error);
       } finally {
@@ -233,7 +231,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat,
+          dataNotifikasiGalat
         );
         console.log(error);
       }
@@ -252,7 +250,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat,
+          dataNotifikasiGalat
         );
         console.log(error);
       }
@@ -289,7 +287,7 @@ export default {
         };
         this.$store.dispatch(
           "notifikasi/tampilkanNotifikasi",
-          dataNotifikasiGalat,
+          dataNotifikasiGalat
         );
         console.log(error);
       } finally {

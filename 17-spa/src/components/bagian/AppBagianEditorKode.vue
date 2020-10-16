@@ -1,11 +1,20 @@
 <template>
   <section class="editor-kode flex">
-    <app-formulir-area-teks
-      :value="inputKode"
-      nama="input-kode"
-      label="Input Kode"
-      @input="$emit('update:inputKode', $event)"
-    />
+    <div class="box">
+      <app-formulir-area-teks
+        :value="inputKode"
+        nama="input-kode"
+        label="Input Kode"
+        @input="$emit('update:inputKode', $event)"
+      />
+    </div>
+    <b-icon
+      style="align-self: center"
+      icon="chevron-right"
+      class="is-hidden-mobile"
+      size="is-large"
+    >
+    </b-icon>
     <app-kode
       :kode="hasilHighlight"
       :bahasa-pemrograman="bahasaPemrogramanTerpilih"
@@ -15,30 +24,30 @@
 </template>
 
 <script>
-import AppKode from '../AppKomponen/AppKode'
+import AppKode from "../AppKomponen/AppKode";
 
-import { validator } from '../../utils'
+import { validator } from "../../utils";
 
 export default {
   components: {
-    AppKode
+    AppKode,
   },
   props: {
     inputKode: {
-      default: '',
+      default: "",
       required: true,
-      validator
+      validator,
     },
     hasilHighlight: {
       type: String,
-      default: '',
-      required: true
+      default: "",
+      required: true,
     },
     bahasaPemrogramanTerpilih: {
-      default: '',
+      default: "",
       required: true,
-      validator
-    }
-  }
-}
+      validator,
+    },
+  },
+};
 </script>

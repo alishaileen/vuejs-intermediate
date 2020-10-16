@@ -1,6 +1,13 @@
-import { stringifyUrl } from 'query-string'
-import { kirimData } from '../utils'
-import { URL_API, OPSI_STRINGIFY } from '../constants'
+import {
+  stringifyUrl
+} from 'query-string'
+import {
+  kirimData
+} from '../utils'
+import {
+  URL_API,
+  OPSI_STRINGIFY
+} from '../constants'
 
 function state() {
   return {
@@ -9,7 +16,9 @@ function state() {
 }
 
 const mutations = {
-  aturDaftarKode(state, { daftarKode }) {
+  aturDaftarKode(state, {
+    daftarKode
+  }) {
     state.daftarKode = daftarKode
   },
   resetDaftarKode(state) {
@@ -18,9 +27,17 @@ const mutations = {
 }
 
 const actions = {
-  async dapatkanSemuaKode({ commit, dispatch }, { idPengguna, filter }) {
+  async dapatkanSemuaKode({
+    commit,
+    dispatch
+  }, {
+    idPengguna,
+    filter
+  }) {
     try {
-      dispatch('proses/tampilkanProses', null, { root: true })
+      dispatch('proses/tampilkanProses', null, {
+        root: true
+      })
       const objekUrl = {
         url: `${URL_API}/code/list`,
         query: {
@@ -48,17 +65,29 @@ const actions = {
       commit('resetDaftarKode')
       const dataNotifikasiGalat = {
         apakahTampil: true,
-        pesan: error.message || 'Silahkan masuk terlebih dahulu'
+        pesan: error.message || 'Silahkan masuk terlebih dahulu',
+        warnaPesan: "is-warning"
       }
-      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, { root: true })
+      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, {
+        root: true
+      })
       console.log(error)
     } finally {
-      dispatch('proses/hilangkanProses', null, { root: true })
+      dispatch('proses/hilangkanProses', null, {
+        root: true
+      })
     }
   },
-  async simpanKode({ dispatch }, { idPengguna, konten }) {
+  async simpanKode({
+    dispatch
+  }, {
+    idPengguna,
+    konten
+  }) {
     try {
-      dispatch('proses/tampilkanProses', null, { root: true })
+      dispatch('proses/tampilkanProses', null, {
+        root: true
+      })
       const url = `${URL_API}/code/store`
       const data = {
         user: idPengguna,
@@ -76,27 +105,43 @@ const actions = {
       if (respon.success && !respon.error) {
         const dataNotifikasi = {
           apakahTampil: true,
-          pesan: 'Kode berhasil disimpan'
+          pesan: 'Kode berhasil disimpan',
+          warnaPesan: 'is-success'
         }
 
-        await dispatch(`notifikasi/tampilkanNotifikasi`, dataNotifikasi, { root: true })
+        await dispatch(`notifikasi/tampilkanNotifikasi`, dataNotifikasi, {
+          root: true
+        })
       } else {
         throw new Error(respon.message)
       }
     } catch (error) {
       const dataNotifikasiGalat = {
         apakahTampil: true,
-        pesan: error.message || 'Silahkan masuk terlebih dahulu'
+        pesan: error.message || 'Silahkan masuk terlebih dahulu',
+        wanaPesan: 'is-warning'
       }
-      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, { root: true })
+      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, {
+        root: true
+      })
       console.log(error)
     } finally {
-      dispatch('proses/hilangkanProses', null, { root: true })
+      dispatch('proses/hilangkanProses', null, {
+        root: true
+      })
     }
   },
-  async ubahKode({ dispatch }, { idPengguna, idKode, konten }) {
+  async ubahKode({
+    dispatch
+  }, {
+    idPengguna,
+    idKode,
+    konten
+  }) {
     try {
-      dispatch('proses/tampilkanProses', null, { root: true })
+      dispatch('proses/tampilkanProses', null, {
+        root: true
+      })
       const url = `${URL_API}/code/edit`
       const data = {
         id: idKode,
@@ -118,24 +163,38 @@ const actions = {
           pesan: 'Kode berhasil diubah'
         }
 
-        await dispatch(`notifikasi/tampilkanNotifikasi`, dataNotifikasi, { root: true })
+        await dispatch(`notifikasi/tampilkanNotifikasi`, dataNotifikasi, {
+          root: true
+        })
       } else {
         throw new Error(respon.message)
       }
     } catch (error) {
       const dataNotifikasiGalat = {
         apakahTampil: true,
-        pesan: error.message || 'Silahkan masuk terlebih dahulu'
+        pesan: error.message || 'Silahkan masuk terlebih dahulu',
+        warnaPesan: "is-warning"
       }
-      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, { root: true })
+      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, {
+        root: true
+      })
       console.log(error)
     } finally {
-      dispatch('proses/hilangkanProses', null, { root: true })
+      dispatch('proses/hilangkanProses', null, {
+        root: true
+      })
     }
   },
-  async hapusKode({ dispatch }, { idPengguna, idKode }) {
+  async hapusKode({
+    dispatch
+  }, {
+    idPengguna,
+    idKode
+  }) {
     try {
-      dispatch('proses/tampilkanProses', null, { root: true })
+      dispatch('proses/tampilkanProses', null, {
+        root: true
+      })
       const url = `${URL_API}/code/delete`
       const data = {
         id: idKode,
@@ -147,22 +206,30 @@ const actions = {
       if (respon.success && !respon.error) {
         const dataNotifikasi = {
           apakahTampil: true,
-          pesan: 'Kode berhasil dihapus'
+          pesan: 'Kode berhasil dihapus',
+          warnaPesan: "is-info"
         }
 
-        await dispatch(`notifikasi/tampilkanNotifikasi`, dataNotifikasi, { root: true })
+        await dispatch(`notifikasi/tampilkanNotifikasi`, dataNotifikasi, {
+          root: true
+        })
       } else {
         throw new Error(respon.message)
       }
     } catch (error) {
       const dataNotifikasiGalat = {
         apakahTampil: true,
-        pesan: error.message || 'Silahkan masuk terlebih dahulu'
+        pesan: error.message || 'Silahkan masuk terlebih dahulu',
+        warnaPesan: "is-warning"
       }
-      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, { root: true })
+      dispatch('notifikasi/tampilkanNotifikasi', dataNotifikasiGalat, {
+        root: true
+      })
       console.log(error)
     } finally {
-      dispatch('proses/hilangkanProses', null, { root: true })
+      dispatch('proses/hilangkanProses', null, {
+        root: true
+      })
     }
   }
 }

@@ -20,19 +20,3 @@
 .flex-align-center {
   align-items: center;
 }
-
-.opsi-formulir-input-kode,
-.tampilan-kode {
-  min-width: 500px;
-  max-width: 500px;
-}
-
-.opsi-formulir-input-kode,
-.input-kode {
-  width: 100%;
-  height: 500px;
-}
-
-.tampilan-kode--kustom {
-  margin-top: 40px
-}
