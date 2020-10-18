@@ -1,11 +1,12 @@
 <template>
-  <section>
-    <div class="opsi-halaman flex flex-align-center margin-bottom">
+  <main>
+    <div class="opsi-halaman is-flex flex-align-center margin-bottom">
       <app-tombol
         nama="sebelumnya"
         label="Sebelumnya"
         :nonaktif="halaman === 1"
         @klik="ketikaTombolSebelumnyaDiKlik"
+        class="margin-right"
       />
       <app-tombol
         nama="selanjutnya"
@@ -23,9 +24,10 @@
         :bahasa-pemrograman="itemKode.lang"
         :apakah-highlight-menyala="apakahHighlightMenyala"
         @terhapus="dapatkanDaftarKode"
+        class="margin-right"
       />
     </div>
-  </section>
+  </main>
 </template>
 
 <script>

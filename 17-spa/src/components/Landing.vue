@@ -1,40 +1,45 @@
 <!-- @format -->
 
 <template>
-  <main>
-    <nav class="container">
-      <b-navbar class="navbar">
-        <template slot="end">
-          <b-navbar-item tag="div">
-            <b-button
-              v-if="!$store.state.pengguna.idPengguna"
-              class="button is-primary"
-              @click="bukaModalLogin()"
-            >
-              Login
-            </b-button>
-            <b-button
-              v-if="$store.state.pengguna.idPengguna"
-              class="button is-primary margin-right"
-              tag="router-link"
-              to="/list-kode"
-            >
-              List Kode
-            </b-button>
-            <app-tombol
-              v-if="$store.state.pengguna.idPengguna"
-              warna="is-dark"
-              nama="keluar"
-              label="Keluar"
-              @klik="ketikaTombolKeluarDiKlik"
-            />
-          </b-navbar-item>
-        </template>
-      </b-navbar>
-    </nav>
-
-    <section class="editor">
-      <div class="container">
+  <main id="landing">
+    <section class="editor-opsi hero is-small is-bold is-primary">
+      <div class="hero-head">
+        <b-navbar class="navbar container">
+          <template slot="end">
+            <b-navbar-item tag="div">
+              <b-button
+                v-if="!$store.state.pengguna.idPengguna"
+                type="is-primary"
+                outlined
+                inverted
+                class="button is-primary"
+                @click="bukaModalLogin()"
+              >
+                Login
+              </b-button>
+              <b-button
+                v-if="$store.state.pengguna.idPengguna"
+                class="button margin-right"
+                type="is-info"
+                outlined
+                inverted
+                tag="router-link"
+                to="/list-kode"
+              >
+                List Kode
+              </b-button>
+              <app-tombol
+                v-if="$store.state.pengguna.idPengguna"
+                warna="is-dark"
+                nama="keluar"
+                label="Keluar"
+                @klik="ketikaTombolKeluarDiKlik"
+              />
+            </b-navbar-item>
+          </template>
+        </b-navbar>
+      </div>
+      <div class="hero-body container margin-bottom">
         <app-bagian-editor-opsi
           :input-kode="dataKode.inputKode"
           :bahasa-pemrograman-terpilih.sync="dataKode.bahasaPemrogramanTerpilih"
@@ -45,16 +50,14 @@
           @tersimpan="dapatkanDaftarKode"
           @reset="ketikaTombolResetDiKlik"
         />
-
-        <app-bagian-editor-kode
-          :input-kode.sync="dataKode.inputKode"
-          :hasil-highlight="hasilHighlight"
-          :bahasa-pemrograman-terpilih="dataKode.bahasaPemrogramanTerpilih"
-        />
       </div>
     </section>
 
-    <footer class="footer has-text-centered">asdf</footer>
+    <app-bagian-editor-kode
+      :input-kode.sync="dataKode.inputKode"
+      :hasil-highlight="hasilHighlight"
+      :bahasa-pemrograman-terpilih="dataKode.bahasaPemrogramanTerpilih"
+    />
 
     <b-modal
       has-modal-card
@@ -63,14 +66,14 @@
       v-model="isModalOpened"
     >
       <div class="modal-card">
-        <!-- <header class="modal-card-head">
-          <p class="modal-card-title">Login atau Daftar</p>
-        </header> -->
-        <section class="box">
+        <header class="modal-card-head">
+          <p class="modal-card-title"></p>
           <button type="button" class="delete" @click="isModalOpened = false" />
-
+        </header>
+        <div class="modal-card-body">
           <app-bagian-pengguna :tutupModal.sync="isModalOpened" />
-        </section>
+        </div>
+        <footer class="modal-card-foot"></footer>
       </div>
     </b-modal>
   </main>

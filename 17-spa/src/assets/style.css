@@ -1,0 +1,95 @@
+nav {
+  background-color: transparent !important;
+}
+
+.editor-opsi {
+  min-height: 250px;
+  padding: 50px 0;
+}
+
+#landing .modal-card label {
+  color: #1a202c !important;
+}
+#landing .modal-card .modal-card-head, #landing .modal-card .modal-card-foot {
+  background-color: #fff;
+  border: none;
+}
+#landing .modal-card .modal-card-body {
+  padding: 50px;
+}
+#landing .box {
+  height: auto;
+  width: auto;
+}
+#landing .box--black-bg {
+  background-color: #1a202c;
+  border-radius: 6px;
+  height: 540px !important;
+  width: 520px !important;
+  padding: 20px 0;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+}
+#landing .editor-kode-wrapper .container {
+  width: 85%;
+}
+
+#list-kode .tampilan-kode {
+  margin-right: 10px;
+  min-width: 500px;
+  max-width: auto;
+}
+#list-kode .container {
+  width: 85% !important;
+}
+
+#landing .editor {
+  margin-top: 50px;
+}
+#landing .editor-kode-wrapper {
+  position: relative;
+}
+#landing .editor-kode {
+  position: absolute;
+  top: -200px;
+}
+#landing #input-kode {
+  height: 500px !important;
+  width: 500px;
+  overflow-y: auto;
+}
+#landing .opsi-formulir-input-kode,
+#landing .tampilan-kode {
+  width: 100%;
+  max-width: 500px;
+}
+#landing .tampilan-kode {
+  max-height: 500px !important;
+  overflow-y: auto;
+}
+
+p, h1, h2, h3, h4, h5, h6, label, .label {
+  font-family: "Poppins", sans-serif !important;
+}
+
+label {
+  color: #ffffff !important;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*# sourceMappingURL=style.css.map */

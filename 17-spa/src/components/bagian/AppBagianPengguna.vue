@@ -20,6 +20,7 @@
           </template>
         </app-formulir-input>
       </div>
+      
       <div class="column">
         <h1 class="title is-3">Daftar</h1>
         <app-formulir-input
@@ -45,7 +46,7 @@
 export default {
   data() {
     return {
-      namaPenggunaMasuk: "jefrydco",
+      namaPenggunaMasuk: "eilin",
       namaPenggunaDaftar: null,
     };
   },

@@ -4,8 +4,7 @@ import Buefy from 'buefy'
 
 import './assets/normalize.css'
 import './assets/tooltip.css'
-import './assets/aplikasi.css'
-import '../src/style.css'
+import './assets/style.css'
 import 'buefy/dist/buefy.css'
 import './assets/highlighter.css'
 

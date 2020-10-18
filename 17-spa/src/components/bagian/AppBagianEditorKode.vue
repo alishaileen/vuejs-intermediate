@@ -1,25 +1,36 @@
 <template>
-  <section class="editor-kode flex">
-    <div class="box">
-      <app-formulir-area-teks
-        :value="inputKode"
-        nama="input-kode"
-        label="Input Kode"
-        @input="$emit('update:inputKode', $event)"
-      />
+  <section class="section hero is-medium is-white editor-kode-wrapper">
+    <div class="container">
+      <div class="">
+        <div class="editor-kode">
+          <div class="is-flex">
+            <div class="box">
+              <app-formulir-area-teks
+                :value="inputKode"
+                nama="input-kode"
+                label="Input Kode"
+                @input="$emit('update:inputKode', $event)"
+              />
+            </div>
+            <b-icon
+              style="align-self: center"
+              icon="chevron-right"
+              class="is-hidden-mobile"
+              type="is-dark"
+              size="is-large"
+            >
+            </b-icon>
+            <div class="box--black-bg">
+              <app-kode
+                :kode="hasilHighlight"
+                :bahasa-pemrograman="bahasaPemrogramanTerpilih"
+                class="tampilan-kode--kustom"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <b-icon
-      style="align-self: center"
-      icon="chevron-right"
-      class="is-hidden-mobile"
-      size="is-large"
-    >
-    </b-icon>
-    <app-kode
-      :kode="hasilHighlight"
-      :bahasa-pemrograman="bahasaPemrogramanTerpilih"
-      class="tampilan-kode--kustom"
-    />
   </section>
 </template>
 

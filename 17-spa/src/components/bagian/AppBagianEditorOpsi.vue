@@ -1,27 +1,9 @@
 <!-- @format -->
 
 <template>
-  <section class="editor-opsi">
-    <div class="columns">
-      <div class="column">
-        <app-formulir-input
-          :value="namaBerkas"
-          nama="nama-berkas"
-          label="Nama Berkas"
-          icon="label"
-          @input="$emit('update:namaBerkas', $event)"
-        />
-      </div>
-      <div class="column">
-        <app-formulir-input
-          :value="highlight"
-          nama="highlight"
-          label="Baris Highlight"
-          icon="marker"
-          @input="$emit('update:highlight', $event)"
-        />
-      </div>
-      <div class="column">
+  <main>
+    <div class="margin-bottom">
+      <div class="is-flex flex-align-center">
         <app-formulir-pilihan
           :value="bahasaPemrogramanTerpilih"
           nama="bahasa-pemrograman"
@@ -29,43 +11,67 @@
           :daftar-pilihan="daftarBahasaPemrograman"
           placeholder="Pilih bahasa"
           icon="web"
+          class="margin-right"
           @input="$emit('update:bahasaPemrogramanTerpilih', $event)"
         />
+        <app-formulir-input
+          :value="namaBerkas"
+          nama="nama-berkas"
+          label="Nama Berkas"
+          icon="label"
+          class="margin-right"
+          @input="$emit('update:namaBerkas', $event)"
+        />
+        <app-formulir-input
+          :value="highlight"
+          nama="highlight"
+          label="Baris Highlight"
+          icon="marker"
+          class="margin-right"
+          @input="$emit('update:highlight', $event)"
+        />
+        <b-tooltip
+          label="Pilih bahasa Typescript atau JSON"
+          type="is-dark"
+          position="is-bottom"
+          :active="!isBisaTwoslash"
+        >
+          <app-formulir-pilihan
+            :nonaktif="!isBisaTwoslash"
+            :value="twoslashTerpilih"
+            nama="twoslash"
+            label="Pilih Twoslash"
+            class="margin-right"
+            placeholder="Pilih twoslash"
+            :daftar-pilihan="daftarTwoslash"
+            @input="$emit('update:twoslashTerpilih', $event)"
+          />
+        </b-tooltip>
       </div>
-      <div class="column">
-        <app-formulir-pilihan
-          v-show="
-            bahasaPemrogramanTerpilih === 'typescript' ||
-            bahasaPemrogramanTerpilih === 'json'
-          "
-          :value="twoslashTerpilih"
-          nama="twoslash"
-          label="Pilih Twoslash"
-          placeholder="Pilih twoslash"
-          :daftar-pilihan="daftarTwoslash"
-          @input="$emit('update:twoslashTerpilih', $event)"
+    </div>
+
+    <div class="opsi-aksi-editor">
+      <div class="is-flex">
+        <AppTombolEditor warna="is-danger" icon="reload" @klik="$emit('reset')" />
+        <AppTombolEditor
+          labelTooltip="Login untuk simpan code"
+          typeTooltip="is-dark"
+          :nonaktif="!($store.state.pengguna.idPengguna)"
+          warna="is-success"
+          icon="content-save-outline"
+          @klik="ketikaTombolSimpanDiKlik"
+        />
+        <AppTombolEditor
+          labelTooltip="Tulis code dulu"
+          typeTooltip="is-dark"
+          :nonaktif="!isBisaUnduh"
+          warna="is-info"
+          icon="download-circle-outline"
+          @klik="ketikaTombolUnduhDiKlik"
         />
       </div>
-      <!-- <div class="column">
-        
-      </div> -->
     </div>
-    <div class="opsi-aksi-editor flex">
-      <AppTombolEditor warna="is-danger" icon="reload" @klik="$emit('reset')" />
-      <AppTombolEditor
-        v-show="$store.state.pengguna.idPengguna"
-        warna="is-success"
-        icon="content-save-outline"
-        @klik="ketikaTombolSimpanDiKlik"
-      />
-      <AppTombolEditor
-        v-show="hasilHighlight && hasilHighlight.length > 0"
-        warna="is-info"
-        icon="download-circle-outline"
-        @klik="ketikaTombolUnduhDiKlik"
-      />
-    </div>
-  </section>
+  </main>
 </template>
 
 <script>
@@ -115,12 +121,33 @@ export default {
     return {
       daftarBahasaPemrograman: [],
       daftarTwoslash: ["twoslash", "tsconfig"],
+      isLoggedIn: false,
+      // isBisaUnduh: null,
     };
   },
   created() {
     this.dapatkanDaftarBahasaPemrograman();
   },
+  watch: {
+    "$store.state.pengguna.idPengguna"(idPengguna) {
+      let isLoggedIn = idPengguna ? true : false
+
+      return isLoggedIn
+    },
+  },
+  computed: {
+    isBisaUnduh() {
+      return this.hasilHighlight && this.hasilHighlight.length > 0 ? true : false
+    },
+    isBisaTwoslash() {
+      return this.bahasaPemrogramanTerpilih === 'typescript' ||
+             this.bahasaPemrogramanTerpilih === 'json' ? true : false
+    }
+  },
   methods: {
+    test() {
+      console.log(this.isBisaUnduh)
+    },
     async dapatkanDaftarBahasaPemrograman() {
       try {
         const respon = await dapatkanOpsi();

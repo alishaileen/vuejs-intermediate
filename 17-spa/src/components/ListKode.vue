@@ -1,29 +1,33 @@
 <!-- @format -->
 
 <template>
-  <main>
-    <section id="list-kode" class="section is-small">
+  <main id="list-kode">
+    <section class="hero section is-small is-primary">
       <div class="container">
-        <b-button class="button is-info" tag="router-link" to="/">
+        <b-button class="button is-link margin-bottom" icon-left="arrow-left" tag="router-link" to="/">
           Kembali
         </b-button>
 
-        <h3 v-show="$store.state.pengguna.idPengguna" class="title is-3">
+        <h1 v-show="$store.state.pengguna.idPengguna" class="title is-1">
           Halo, {{ $store.state.pengguna.namaPengguna }}
-        </h3>
+        </h1>
 
         <app-bagian-opsi-daftar-kode
           :banyak-data.sync="filter.banyakData"
           :urutkan-berdasarkan.sync="filter.urutkanBerdasarkan"
           :urutkan.sync="filter.urutkan"
           :apakah-highlight-menyala.sync="filter.apakahHighlightMenyala"
+          :maxData="maxData"
         />
-
+      </div>
+    </section>
+    <section class="hero section">
+      <div class="container">
         <app-bagian-daftar-kode
-          :halaman.sync="filter.halaman"
-          :apakah-highlight-menyala="filter.apakahHighlightMenyala"
-          :dapatkan-daftar-kode="dapatkanDaftarKode"
-        />
+        :halaman.sync="filter.halaman"
+        :apakah-highlight-menyala="filter.apakahHighlightMenyala"
+        :dapatkan-daftar-kode="dapatkanDaftarKode"
+      />
       </div>
     </section>
   </main>
@@ -52,6 +56,7 @@ export default {
   },
   data() {
     return {
+      maxData: this.$store.state.kode.daftarKode.length,
       filter: {
         halaman: 1,
         banyakData: this.$store.state.kode.daftarKode.length,
